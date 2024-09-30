@@ -7,9 +7,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // return res.json({
   //   message: `Hello ${name}!`,
   // })
-  const { name = 'World' } = req.query
+  const { name = 'World', channel_name, uid, action } = req.query
   console.log({name})
-  const {channel_name, uid, action} = req.body;
+  // const {channel_name, uid, action} = req.body;
   console.log({channel_name}, {uid}, {action})
   const requestBody = {
       channel_name,
