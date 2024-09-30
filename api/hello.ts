@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 const API_BASE_URL = process.env.AGORA_AI_AGENT_URL || "http://47.251.115.141:8081";
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   // const { name = 'World' } = req.query
   // return res.json({
   //   message: `Hello ${name}!`,
