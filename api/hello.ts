@@ -2,7 +2,7 @@ export const maxDuration = 60; // This function can run for a maximum of 5 secon
 
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-const API_BASE_URL = process.env.AGORA_AI_AGENT_URL || "http://47.251.115.141:8081";
+const API_BASE_URL = process.env.AGORA_AI_AGENT_URL || "http://172.215.144.238:8083";
 
 const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true)
