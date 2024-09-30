@@ -15,7 +15,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       channel_name,
       uid
   }
-  console.log({URL: `${API_BASE_URL}/${action}`}, {body} )
+  console.log({URL: `${API_BASE_URL}/${action}`}, {requestBody} )
   const response = await fetch(`${API_BASE_URL}/${action}`, {
     method: 'POST',
     headers: {
