@@ -2,7 +2,23 @@ import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 const API_BASE_URL = process.env.AGORA_AI_AGENT_URL || "http://47.251.115.141:8081";
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+const allowCors = fn => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+  return await fn(req, res)
+}
+async function handler(req: VercelRequest, res: VercelResponse) {
   // const { name = 'World' } = req.query
   // return res.json({
   //   message: `Hello ${name}!`,
@@ -35,3 +51,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   })
   
 }
+
+module.exports = allowCors(handler)
