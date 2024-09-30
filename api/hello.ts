@@ -23,14 +23,14 @@ async function handler(req: VercelRequest, res: VercelResponse) {
   // return res.json({
   //   message: `Hello ${name}!`,
   // })
-  const { name = 'World', channel_name, uid, action } = req.query
-  console.log({name})
-  // const {channel_name, uid, action} = req.body;
-  console.log({channel_name}, {uid}, {action})
+  // const { name = 'World', channel_name, uid, action } = req.query
+  // console.log({name})
+  const {channel_name, uid, action} = req.body;
   const requestBody = {
       channel_name,
       uid
   }
+  console.log({channel_name}, {uid}, {action}, "-post body")
   console.log({URL: `${API_BASE_URL}/${action}`}, {requestBody} )
   const response = await fetch(`${API_BASE_URL}/${action}`, {
     method: 'POST',
