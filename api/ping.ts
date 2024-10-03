@@ -19,7 +19,7 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res)
 }
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+async function handler(req: VercelRequest, res: VercelResponse) {
   const { name = 'World', action='ping_agent', channel_name } = req.query
 
 
